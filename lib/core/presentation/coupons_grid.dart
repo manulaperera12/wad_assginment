@@ -7,58 +7,24 @@ import '../../features/vendor_profile/presentation/vendor_profile_screen.dart';
 
 class CouponsGrid extends StatefulWidget {
   final Function onTap;
+  final bool showCoupons;
 
-  const CouponsGrid({super.key, required this.onTap});
+  const CouponsGrid({super.key, required this.onTap, required this.showCoupons});
 
   @override
   State<CouponsGrid> createState() => _CouponsGridState();
 }
 
 class _CouponsGridState extends State<CouponsGrid> {
-  bool isClickedActive = false; // to track which side is active
+  bool isClickedActive = false;
   bool isGoldPackageOnly = false;
   bool isClockVisible = false;
   final List<dynamic> couponObjBluePrint = List.generate(10, (index) => {});
-
-  // void showCustomBottomSheet(
-  //     BuildContext context,
-  //     String title,
-  //     String imagePath,
-  //     ) {
-  //   showModalBottomSheet(
-  //     context: context,
-  //     isScrollControlled: true,
-  //     backgroundColor: backgroundColor,
-  //     constraints: BoxConstraints(
-  //       maxWidth: 1.sw,
-  //     ),
-  //     builder: (_) {
-  //       return BackdropFilter(
-  //         filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-  //         child: Container(
-  //           // margin: EdgeInsets.symmetric(horizontal: 0.0),
-  //           width: 1.sw,
-  //           decoration: BoxDecoration(
-  //             color: Colors.white.withOpacity(0.9),
-  //             borderRadius: BorderRadius.vertical(
-  //               top: Radius.circular(20.r),
-  //             ),
-  //           ),
-  //           child: VendorProfileScreen(
-  //             title: title,
-  //             imagePath: imagePath,
-  //           ),
-  //         ),
-  //       );
-  //     },
-  //   );
-  // }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: backgroundColor,
-      // height: 1.sh,
       child: GridView.builder(
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
@@ -94,8 +60,6 @@ class _CouponsGridState extends State<CouponsGrid> {
                         color: kWhiteColor,
                         child: Image.asset('assets/images/cover.png', fit: BoxFit.cover),
                       ),
-
-                      /// avatar image
                       Positioned(
                         top: 8.h,
                         left: 10.w,
@@ -134,44 +98,40 @@ class _CouponsGridState extends State<CouponsGrid> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Company Name',
-                              style: kBarlow500(
-                                context,
-                              ),
+                              widget.showCoupons ? 'Coupons' : 'Company Name',
+                              style: kBarlow500(context),
                             ),
-                            // offer text
                             Padding(
                               padding: EdgeInsets.symmetric(vertical: 10.0.h),
                               child: RichText(
                                   text: TextSpan(children: [
-                                TextSpan(
-                                  style: kBarlow700(context, color: kPrimaryTextColor),
-                                  text: "Save ",
-                                ),
-                                TextSpan(
-                                  style: kBarlow700(
-                                    context,
-                                    color: kPurpleColor,
-                                    fontSize: 28.sp,
-                                  ),
-                                  text: "1,500",
-                                ),
-                                TextSpan(
-                                    style: kBarlow300(
-                                      context,
-                                      color: kPurpleColor,
-                                      fontSize: 12.sp,
+                                    TextSpan(
+                                      style: kBarlow700(context, color: kPrimaryTextColor),
+                                      text: "Save ",
                                     ),
-                                    text: "LKR")
-                              ])),
+                                    TextSpan(
+                                      style: kBarlow700(
+                                        context,
+                                        color: kPurpleColor,
+                                        fontSize: 28.sp,
+                                      ),
+                                      text: "1,500",
+                                    ),
+                                    TextSpan(
+                                        style: kBarlow300(
+                                          context,
+                                          color: kPurpleColor,
+                                          fontSize: 12.sp,
+                                        ),
+                                        text: "LKR")
+                                  ])),
                             ),
-                            // description
                             Padding(
                               padding: EdgeInsets.only(bottom: 8.0.h),
                               child: SizedBox(
                                 width: 156.w,
                                 child: Text(
-                                  "Enjoy 50% off this season on all Burgers on all Burgerson all Burgerson all Burgers",
+                                  "Enjoy 50% off this season on all Burgers",
                                   style: kPoppins400(
                                     context,
                                     color: kSecondaryTextColor,
@@ -185,15 +145,13 @@ class _CouponsGridState extends State<CouponsGrid> {
                           ],
                         ),
                       ),
-
-                      /// heart icon
                       Positioned(
                         top: 63.h,
                         right: 10.w,
                         child: GestureDetector(
                           onTap: () {
                             setState(() {
-                              isClickedActive = !isClickedActive; // Toggle the state
+                              isClickedActive = !isClickedActive;
                             });
                             debugPrint('Heart Clicked');
                           },
@@ -209,8 +167,6 @@ class _CouponsGridState extends State<CouponsGrid> {
                           ),
                         ),
                       ),
-
-                      /// clock icon
                       Visibility(
                         visible: isClockVisible,
                         child: Positioned(
@@ -221,14 +177,9 @@ class _CouponsGridState extends State<CouponsGrid> {
                             width: 25.w,
                             height: 25.h,
                             fit: BoxFit.contain,
-                            // colorFilter: ColorFilter.mode(
-                            //   isClickedActive ? kRedColor : kHeartNotActive,
-                            //   BlendMode.srcIn,
-                            // ),
                           ),
                         ),
                       ),
-                      /// gold package only
                       Visibility(
                         visible: isGoldPackageOnly,
                         child: Positioned(

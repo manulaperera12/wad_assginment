@@ -207,7 +207,7 @@ class _VendorProfileScreenState extends State<VendorProfileScreen> {
                   ),
 
                   /// coupon grid
-                  CouponsGrid(onTap: () {},),
+                  CouponsGrid(onTap: () {}, showCoupons: false,),
                 ],
               ),
             ),

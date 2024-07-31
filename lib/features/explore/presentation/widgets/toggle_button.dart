@@ -5,7 +5,9 @@ import '../../../../util/colors.dart';
 import '../../../../util/font.dart';
 
 class CustomAnimatedToggleButton extends StatefulWidget {
-  const CustomAnimatedToggleButton({super.key});
+  final Function(bool) onToggle;
+
+  const CustomAnimatedToggleButton({super.key, required this.onToggle});
 
   @override
   CustomAnimatedToggleButtonState createState() => CustomAnimatedToggleButtonState();
@@ -14,7 +16,7 @@ class CustomAnimatedToggleButton extends StatefulWidget {
 class CustomAnimatedToggleButtonState extends State<CustomAnimatedToggleButton> with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _animation;
-  bool isLeftActive = true; // to track which side is active
+  bool isLeftActive = true;
 
   @override
   void initState() {
@@ -36,6 +38,7 @@ class CustomAnimatedToggleButtonState extends State<CustomAnimatedToggleButton> 
   void toggle() {
     setState(() {
       isLeftActive = !isLeftActive;
+      widget.onToggle(isLeftActive);
       isLeftActive ? _animationController.reverse() : _animationController.forward();
     });
   }

@@ -23,11 +23,18 @@ class _ExploreScreenState extends State<ExploreScreen> {
   final _scrollController = ScrollController();
   bool isBlur = false;
   int selectedIndex = 0;
+  bool isLeftActive = true;
   final List<String> categoryNames = [
     "View all",
     "Burgers",
     "Japanese",
   ];
+
+  void toggleCouponGrid(bool isLeft) {
+    setState(() {
+      isLeftActive = isLeft;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,20 +42,12 @@ class _ExploreScreenState extends State<ExploreScreen> {
       backgroundColor: backgroundColor,
       bottomNavigationBar: const CustomNavbar(),
       body: Stack(
-        // fit: StackFit.expand,
         children: [
           NotificationListener<UserScrollNotification>(
             onNotification: (notification) {
-              debugPrint("notification.direction ${notification.direction}");
-              if (notification.direction == ScrollDirection.forward) {
-                setState(() {
-                  isBlur = true;
-                });
-              } else {
-                setState(() {
-                  isBlur = false;
-                });
-              }
+              setState(() {
+                isBlur = notification.direction == ScrollDirection.forward;
+              });
               return true;
             },
             child: CustomScrollView(
@@ -60,9 +59,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     minHeight: 100.h,
                     maxHeight: 100.h,
                     child: CustomHeader(
-                      leadWidget: const CustomRoundedButton(
-                        icon: "back_icon.svg",
-                      ),
+                      leadWidget: const CustomRoundedButton(icon: "back_icon.svg"),
                       title: "Food and Drinks",
                       centerTitle: true,
                       isBlur: isBlur,
@@ -76,23 +73,20 @@ class _ExploreScreenState extends State<ExploreScreen> {
                         padding: EdgeInsets.only(bottom: 14.0.h),
                         child: const CustomDivider(),
                       ),
-
-                      // toggle button
-                      const CustomAnimatedToggleButton(),
-
+                      CustomAnimatedToggleButton(
+                        onToggle: toggleCouponGrid,
+                      ),
                       Padding(
                         padding: EdgeInsets.only(top: 17.0.h),
                         child: const CustomDivider(),
                       ),
-
-                      // category list
                       SizedBox(
                         height: 95.h,
                         child: ListView.builder(
                           itemCount: categoryNames.length,
                           shrinkWrap: true,
                           scrollDirection: Axis.horizontal,
-                          itemBuilder: (BuildContext context, int index) {
+                          itemBuilder: (context, index) {
                             bool isSelected = index == selectedIndex;
                             return GestureDetector(
                               onTap: () {
@@ -104,9 +98,6 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                                 child: AnimatedContainer(
                                   duration: const Duration(milliseconds: 400),
-                                  // Duration of the color transition
-                                  curve: Curves.easeInOut,
-                                  // Type of animation curve to make the transition smooth
                                   height: 58.h,
                                   margin: EdgeInsets.symmetric(horizontal: 7.w),
                                   decoration: BoxDecoration(
@@ -116,7 +107,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                       BoxShadow(
                                         color: isSelected ? kPurpleShadowColor : kButtonShadowColor,
                                         offset: const Offset(4, 3),
-                                        blurRadius: isSelected ? 15.r :4.r,
+                                        blurRadius: isSelected ? 15.r : 4.r,
                                         spreadRadius: 3,
                                       ),
                                     ],
@@ -139,25 +130,30 @@ class _ExploreScreenState extends State<ExploreScreen> {
                           },
                         ),
                       ),
-
-                      // coupon grid
-                      CouponsGrid(
-                        onTap: () {
-                          Navigator.push(
+                      AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 300),
+                        child: CouponsGrid(
+                          key: ValueKey<bool>(isLeftActive),
+                          onTap: () {
+                            Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const VendorProfileScreen(
-                                        title: 'Company Name',
-                                        imagePath: 'assets/images/profile_star.png',
-                                      )));
-                        },
+                                builder: (context) => const VendorProfileScreen(
+                                  imagePath: "assets/images/profile_star.png",
+                                  title: "Company Name",
+                                ),
+                              ),
+                            );
+                          },
+                          showCoupons: isLeftActive,
+                        ),
                       ),
                     ],
                   ),
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
