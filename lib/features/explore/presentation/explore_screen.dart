@@ -23,7 +23,6 @@ class _ExploreScreenState extends State<ExploreScreen> {
   final _scrollController = ScrollController();
   bool isBlur = false;
   int selectedIndex = 0;
-  /// category names
   final List<String> categoryNames = [
     "View all",
     "Burgers",
