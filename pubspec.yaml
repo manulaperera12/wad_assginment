@@ -17,12 +17,19 @@ dependencies:
   shimmer: ^3.0.0
   flutter_svg: ^2.0.10+1
   flutter_toggle_button: ^0.0.3
+  copy_with_extension: ^5.0.4
+  equatable: ^2.0.5
+  dartz: ^0.10.1
+  dio: ^5.5.0+1
+  internet_connection_checker: ^1.0.0+1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^3.0.0
+  build_runner: ^2.4.11
+  copy_with_extension_gen: ^5.0.4
 
 flutter:
 
