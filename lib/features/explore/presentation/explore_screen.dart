@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wad_interview_test/features/explore/presentation/bloc/coupon/coupon_bloc.dart';
 import 'package:wad_interview_test/features/explore/presentation/widgets/toggle_button.dart';
 import '../../../core/presentation/back_button.dart';
 import '../../../core/presentation/coupons_grid.dart';
@@ -10,13 +12,33 @@ import '../../../core/presentation/divider.dart';
 import '../../../core/presentation/sliver_bar_app_delegate.dart';
 import '../../../util/colors.dart';
 import '../../../util/font.dart';
+import '../../../util/injector.dart';
 import '../../vendor_profile/presentation/vendor_profile_screen.dart';
+
+class ExploreScreenWrapper extends StatelessWidget {
+
+  const ExploreScreenWrapper({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<CouponBloc>(
+          create: (context) => sl<CouponBloc>(),
+        ),
+      ],
+      child: const ExploreScreen(),
+    );
+  }
+}
 
 class ExploreScreen extends StatefulWidget {
   const ExploreScreen({super.key});
 
   @override
   State<ExploreScreen> createState() => _ExploreScreenState();
+
+
 }
 
 class _ExploreScreenState extends State<ExploreScreen> {
@@ -34,6 +56,12 @@ class _ExploreScreenState extends State<ExploreScreen> {
     setState(() {
       isLeftActive = isLeft;
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    context.read<CouponBloc>().add(const InitialCouponListEvent(isRefresh: true));
   }
 
   @override

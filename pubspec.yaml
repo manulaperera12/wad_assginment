@@ -22,6 +22,13 @@ dependencies:
   dartz: ^0.10.1
   dio: ^5.5.0+1
   internet_connection_checker: ^1.0.0+1
+  shared_preferences: ^2.3.0
+  bloc: ^8.1.4
+  flutter_bloc: ^8.1.6
+  hydrated_bloc: ^9.1.5
+  bloc_concurrency: ^0.2.5
+  stream_transform: ^2.1.0
+  get_it: ^7.7.0
 
 dev_dependencies:
   flutter_test:
