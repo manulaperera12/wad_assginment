@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wad_interview_test/features/explore/presentation/bloc/coupon/coupon_bloc.dart';
+import 'package:wad_interview_test/features/explore/presentation/bloc/vendor/vendor_bloc.dart';
 import 'package:wad_interview_test/features/explore/presentation/widgets/toggle_button.dart';
 import '../../../core/presentation/back_button.dart';
 import '../../../core/presentation/coupons_grid.dart';
@@ -23,6 +24,10 @@ class ExploreScreenWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider<VendorBloc>(
+          create: (context) => sl<VendorBloc>(),
+        ),
+
         BlocProvider<CouponBloc>(
           create: (context) => sl<CouponBloc>(),
         ),
@@ -61,7 +66,8 @@ class _ExploreScreenState extends State<ExploreScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<CouponBloc>().add(const InitialCouponListEvent(isRefresh: true));
+    context.read<CouponBloc>().add(const InitialCouponListEvent());
+    context.read<VendorBloc>().add(const GetVendorEventDataEvent());
   }
 
   @override
