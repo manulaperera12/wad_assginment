@@ -1,0 +1,49 @@
+name: wad_interview_test
+description: "A new Flutter project."
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.6
+  flutter_screenutil: ^5.9.3
+  shimmer: ^3.0.0
+  flutter_svg: ^2.0.10+1
+  flutter_toggle_button: ^0.0.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.0
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/images/
+    - assets/icons/
+
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: fonts/poppins/Poppins-Light.ttf
+        - asset: fonts/poppins/Poppins-Regular.ttf
+        - asset: fonts/poppins/Poppins-Bold.ttf
+        - asset: fonts/poppins/Poppins-Medium.ttf
+
+    - family: Barlow
+      fonts:
+        - asset: fonts/barlow/Barlow-SemiBold.ttf
+        - asset: fonts/barlow/Barlow-Medium.ttf
+        - asset: fonts/barlow/Barlow-Light.ttf
+        - asset: fonts/barlow/Barlow-Bold.ttf
