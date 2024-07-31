@@ -1,15 +1,23 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shimmer/shimmer.dart';
+import 'package:wad_interview_test/core/presentation/shimmers/shimmer_builder.dart';
 import '../../../../util/colors.dart';
 import '../../../../util/font.dart';
+import '../../features/explore/domain/entity/coupons/coupon_data_entity.dart';
+import '../../features/explore/domain/entity/vendor/parent_company_data_entity.dart';
 import '../../features/vendor_profile/presentation/vendor_profile_screen.dart';
+import 'error_widget_image.dart';
 
 class CouponsGrid extends StatefulWidget {
   final Function onTap;
   final bool showCoupons;
+  final List<CouponDataEntity>? couponObjBluePrint;
+  final List<ParentCompanyDataEntity>? vendorObjBluePrint;
 
-  const CouponsGrid({super.key, required this.onTap, required this.showCoupons});
+  const CouponsGrid({super.key, required this.onTap, required this.showCoupons, this.couponObjBluePrint, this.vendorObjBluePrint});
 
   @override
   State<CouponsGrid> createState() => _CouponsGridState();
@@ -19,7 +27,7 @@ class _CouponsGridState extends State<CouponsGrid> {
   bool isClickedActive = false;
   bool isGoldPackageOnly = false;
   bool isClockVisible = false;
-  final List<dynamic> couponObjBluePrint = List.generate(10, (index) => {});
+  // final List<CouponDataEntity> couponObjBluePrint = List.generate(10, (index) => {});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +36,7 @@ class _CouponsGridState extends State<CouponsGrid> {
       child: GridView.builder(
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
-        itemCount: couponObjBluePrint.length,
+        itemCount: widget.couponObjBluePrint?.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           crossAxisSpacing: 17.w,
@@ -58,7 +66,14 @@ class _CouponsGridState extends State<CouponsGrid> {
                         height: 52.h,
                         width: double.infinity,
                         color: kWhiteColor,
-                        child: Image.asset('assets/images/cover.png', fit: BoxFit.cover),
+                        child: CachedNetworkImage(
+                          imageUrl: "https://staging-admin.slashdeals.lk${widget.couponObjBluePrint?[index].parentCompanyCoverImg}",
+                          placeholder: (context, url) => shimmerLoader(),
+                          errorWidget: (context, url, error) => Image.asset('assets/images/cover.png', fit: BoxFit.cover),
+                          useOldImageOnUrlChange: true,
+                          fit: BoxFit.cover,
+                        ),
+                        // child: Image.asset('assets/images/cover.png', fit: BoxFit.cover),
                       ),
                       Positioned(
                         top: 8.h,
@@ -85,7 +100,14 @@ class _CouponsGridState extends State<CouponsGrid> {
                               backgroundColor: kWhiteColor,
                               radius: 27.0.r,
                               child: ClipOval(
-                                child: Image.asset('assets/images/profile_star.png', fit: BoxFit.cover),
+                                child: CachedNetworkImage(
+                                  imageUrl: "https://staging-admin.slashdeals.lk${widget.couponObjBluePrint?[index].parentCompanyProfileImg}",
+                                  placeholder: (context, url) => shimmerLoader(),
+                                  errorWidget: (context, url, error) => Image.asset('assets/images/error_img.png', fit: BoxFit.cover),
+                                  useOldImageOnUrlChange: true,
+                                  fit: BoxFit.cover,
+                                ),
+                                // child: Image.asset('assets/images/profile_star.png', fit: BoxFit.cover),
                               ),
                             ),
                           ),
@@ -98,9 +120,13 @@ class _CouponsGridState extends State<CouponsGrid> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              widget.showCoupons ? 'Coupons' : 'Company Name',
+                              (widget.couponObjBluePrint?[index].parentCompanyName ?? 'Company Name')
+                                  .split(" ")  // Split the name into words
+                                  .take(2)      // Take the first two words
+                                  .join(" "),   // Join them with a space
                               style: kBarlow500(context),
                             ),
+
                             Padding(
                               padding: EdgeInsets.symmetric(vertical: 10.0.h),
                               child: RichText(
@@ -115,7 +141,7 @@ class _CouponsGridState extends State<CouponsGrid> {
                                         color: kPurpleColor,
                                         fontSize: 28.sp,
                                       ),
-                                      text: "1,500",
+                                      text: widget.couponObjBluePrint?[index].value.toString(),
                                     ),
                                     TextSpan(
                                         style: kBarlow300(
@@ -131,7 +157,7 @@ class _CouponsGridState extends State<CouponsGrid> {
                               child: SizedBox(
                                 width: 156.w,
                                 child: Text(
-                                  "Enjoy 50% off this season on all Burgers",
+                                  widget.couponObjBluePrint?[index].description ?? 'Description',
                                   style: kPoppins400(
                                     context,
                                     color: kSecondaryTextColor,

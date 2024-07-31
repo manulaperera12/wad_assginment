@@ -16,7 +16,6 @@ part 'coupon_state.dart';
 class CouponBloc extends Bloc<CouponEvent, CouponState> {
   final GetCouponUseCase couponUseCase;
 
-
   // CouponBloc({required this.couponUseCase}) : super(const CouponState(status: CouponListStatus.initial)) {
   //   on<InitialCouponListEvent>(_openInitialCouponListEvent, transformer: Transformer.throttleDroppable());
   // }

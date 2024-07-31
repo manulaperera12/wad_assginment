@@ -29,6 +29,9 @@ dependencies:
   bloc_concurrency: ^0.2.5
   stream_transform: ^2.1.0
   get_it: ^7.7.0
+  cached_network_image: ^3.3.1
+  flutter_cache_manager: ^3.3.1
+  path_provider: ^2.1.0
 
 dev_dependencies:
   flutter_test:

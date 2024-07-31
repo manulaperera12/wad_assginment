@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wad_interview_test/features/explore/data/model/coupon/coupon_model.dart';
+import 'package:wad_interview_test/features/explore/data/model/coupon/coupon_model.dart';
 import 'package:wad_interview_test/features/explore/presentation/bloc/coupon/coupon_bloc.dart';
 import 'package:wad_interview_test/features/explore/presentation/bloc/vendor/vendor_bloc.dart';
 import 'package:wad_interview_test/features/explore/presentation/widgets/toggle_button.dart';
+import '../../../core/other/wait_while.dart';
 import '../../../core/presentation/back_button.dart';
 import '../../../core/presentation/coupons_grid.dart';
 import '../../../core/presentation/custom_header.dart';
@@ -101,88 +104,117 @@ class _ExploreScreenState extends State<ExploreScreen> {
                   ),
                 ),
                 SliverToBoxAdapter(
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 14.0.h),
-                        child: const CustomDivider(),
-                      ),
-                      CustomAnimatedToggleButton(
-                        onToggle: toggleCouponGrid,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 17.0.h),
-                        child: const CustomDivider(),
-                      ),
-                      SizedBox(
-                        height: 95.h,
-                        child: ListView.builder(
-                          itemCount: categoryNames.length,
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            bool isSelected = index == selectedIndex;
-                            return GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  selectedIndex = index;
-                                });
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 16.0),
-                                child: AnimatedContainer(
-                                  duration: const Duration(milliseconds: 400),
-                                  height: 58.h,
-                                  margin: EdgeInsets.symmetric(horizontal: 7.w),
-                                  decoration: BoxDecoration(
-                                    color: isSelected ? kPurpleColor : kWhiteColor,
-                                    borderRadius: BorderRadius.all(Radius.circular(29.r)),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: isSelected ? kPurpleShadowColor : kButtonShadowColor,
-                                        offset: const Offset(4, 3),
-                                        blurRadius: isSelected ? 15.r : 4.r,
-                                        spreadRadius: 3,
-                                      ),
-                                    ],
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 23.w, vertical: 16.h),
-                                    child: Center(
-                                      child: Text(
-                                        categoryNames[index],
-                                        style: kPoppins500(
-                                          context,
-                                          color: isSelected ? kWhiteColor : kPrimaryTextColor,
+                  child: RefreshIndicator(
+                    onRefresh: () async {
+                      CouponBloc couponBloc = BlocProvider.of<CouponBloc>(context);
+                      VendorBloc vendorBloc = BlocProvider.of<VendorBloc>(context);
+                      context.read<CouponBloc>().add(const InitialCouponListEvent());
+                      context.read<VendorBloc>().add(const GetVendorEventDataEvent());
+
+                      await Future.delayed(const Duration(milliseconds: 100));
+                      await waitWhile(() {
+                        return couponBloc.state.status == CouponListStatus.loading ||
+                            couponBloc.state.status == CouponListStatus.initial;
+                      }, const Duration(milliseconds: 100));
+                    },
+                    color: kPrimaryTextColor,
+                    strokeWidth: 2.5,
+                    displacement: 45,
+                    edgeOffset: 72,
+                    child: BlocBuilder<CouponBloc, CouponState>(
+                      builder: (context, couponState) {
+                        return BlocBuilder<VendorBloc, VendorState>(
+                          builder: (context, vendorState) {
+                            return Column(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(bottom: 14.0.h),
+                                  child: const CustomDivider(),
+                                ),
+                                CustomAnimatedToggleButton(
+                                  onToggle: toggleCouponGrid,
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(top: 17.0.h),
+                                  child: const CustomDivider(),
+                                ),
+                                SizedBox(
+                                  height: 95.h,
+                                  child: ListView.builder(
+                                    itemCount: categoryNames.length,
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.horizontal,
+                                    itemBuilder: (context, index) {
+                                      bool isSelected = index == selectedIndex;
+                                      return GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            selectedIndex = index;
+                                          });
+                                        },
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(vertical: 16.0),
+                                          child: AnimatedContainer(
+                                            duration: const Duration(milliseconds: 400),
+                                            height: 58.h,
+                                            margin: EdgeInsets.symmetric(horizontal: 7.w),
+                                            decoration: BoxDecoration(
+                                              color: isSelected ? kPurpleColor : kWhiteColor,
+                                              borderRadius: BorderRadius.all(Radius.circular(29.r)),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: isSelected ? kPurpleShadowColor : kButtonShadowColor,
+                                                  offset: const Offset(4, 3),
+                                                  blurRadius: isSelected ? 15.r : 4.r,
+                                                  spreadRadius: 3,
+                                                ),
+                                              ],
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(horizontal: 23.w, vertical: 16.h),
+                                              child: Center(
+                                                child: Text(
+                                                  categoryNames[index],
+                                                  style: kPoppins500(
+                                                    context,
+                                                    color: isSelected ? kWhiteColor : kPrimaryTextColor,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
                                         ),
-                                      ),
-                                    ),
+                                      );
+                                    },
                                   ),
                                 ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      AnimatedSwitcher(
-                        duration: const Duration(milliseconds: 300),
-                        child: CouponsGrid(
-                          key: ValueKey<bool>(isLeftActive),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const VendorProfileScreen(
-                                  imagePath: "assets/images/profile_star.png",
-                                  title: "Company Name",
+                                AnimatedSwitcher(
+                                  duration: const Duration(milliseconds: 300),
+                                  child: CouponsGrid(
+                                    key: ValueKey<bool>(isLeftActive),
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                          const VendorProfileScreen(
+                                            imagePath: "assets/images/profile_star.png",
+                                            title: "Company Name",
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    showCoupons: isLeftActive,
+                                    couponObjBluePrint: couponState.couponList,
+                                    vendorObjBluePrint: vendorState.vendorEntity?.parentCompanyDataEntity,
+                                  ),
                                 ),
-                              ),
+                              ],
                             );
                           },
-                          showCoupons: isLeftActive,
-                        ),
-                      ),
-                    ],
+                        );
+                      },
+                    ),
                   ),
                 ),
               ],
