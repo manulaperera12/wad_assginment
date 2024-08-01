@@ -39,7 +39,7 @@ class GridShimmer extends StatelessWidget {
                   children: [
                     shimmerLoader(child: Container(
                       height: 52.h,
-                      color: Colors.red,
+                      color: kWhiteColor,
                     ),),
                     Positioned(
                       top: 8.h,
