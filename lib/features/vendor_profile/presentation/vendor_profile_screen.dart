@@ -1,16 +1,20 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../core/presentation/bounce_widget.dart';
 import '../../../core/presentation/coupons_grid.dart';
+import '../../../core/presentation/shimmers/shimmer_builder.dart';
 import '../../../util/colors.dart';
 import '../../../util/font.dart';
 
 class VendorProfileScreen extends StatefulWidget {
   final String title;
+  final String description;
   final String imagePath;
+  final String rating;
 
-  const VendorProfileScreen({super.key, required this.title, required this.imagePath});
+  const VendorProfileScreen({super.key, required this.title, required this.imagePath, required this.description, required this.rating});
 
   @override
   State<VendorProfileScreen> createState() => _VendorProfileScreenState();
@@ -62,13 +66,12 @@ class _VendorProfileScreenState extends State<VendorProfileScreen> {
                             ),
                             child: Padding(
                               padding: EdgeInsets.all(11.0.w),
-                              child: SizedBox(
-                                width: 68.w,
-                                height: 68.h,
-                                child: ClipOval(
-                                  child: Image.asset(
-                                    widget.imagePath,
-                                  ),
+                              child: CircleAvatar(
+                                backgroundColor: kWhiteColor,
+                                radius: 27.0.r,
+                                child: Image.network(
+                                  widget.imagePath,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
                             ),
@@ -83,23 +86,29 @@ class _VendorProfileScreenState extends State<VendorProfileScreen> {
                               /// Company details
                               Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
                                     padding: EdgeInsets.only(top: 11.0.h, bottom: 8.0.h),
                                     child: Text(
-                                      'Company Name',
+                                      widget.title,
                                       style: kBarlow500(
                                         context,
                                         fontSize: 24.sp,
                                       ),
                                     ),
                                   ),
-                                  Text(
-                                    'Coffee and Break Shop',
-                                    style: kPoppins400(
-                                      context,
-                                      fontSize: 14.sp,
-                                      color: kVendorShopDesTextColor,
+                                  SizedBox(
+                                    width: 0.6.sw,
+                                    child: Text(
+                                      widget.description,
+                                      style: kPoppins400(
+                                        context,
+                                        fontSize: 14.sp,
+                                        color: kVendorShopDesTextColor,
+                                      ),
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
                                     ),
                                   ),
                                 ],
@@ -127,7 +136,7 @@ class _VendorProfileScreenState extends State<VendorProfileScreen> {
                                     padding: EdgeInsets.symmetric(horizontal: 17.w, vertical: 10.h),
                                     child: Center(
                                       child: Text(
-                                        '4.5',
+                                        widget.rating,
                                         style: kPoppins500(
                                           context,
                                           color: kWhiteColor,
@@ -207,7 +216,7 @@ class _VendorProfileScreenState extends State<VendorProfileScreen> {
                   ),
 
                   /// coupon grid
-                  CouponsGrid(onTap: () {}, showCoupons: false,),
+                  CouponsGridWrapper(showCoupons: true,),
                 ],
               ),
             ),

@@ -33,7 +33,7 @@ class ErrorWidgetImage extends StatelessWidget {
       width: width,
       height: height,
       decoration: BoxDecoration(
-        color: color ?? kWhiteColor,
+        color: color ?? backgroundColor,
         // border: border ?? Border.all(width: 1, color: kSearchIconColor),
         borderRadius: borderRadius ?? BorderRadius.all(Radius.circular(0.r)),
       ),
@@ -49,7 +49,7 @@ class ErrorWidgetImage extends StatelessWidget {
                 height: height ?? 35,
                 child: loading
                     ? CircularProgressIndicator(color: circularProgressIndicatorColor ?? kPurpleColor, value: value)
-                    : SvgPicture.asset('assets/svg/error_warning.svg', fit: BoxFit.contain),
+                    : Image.asset('assets/images/error_img.png', fit: BoxFit.contain),
               ),
             ),
     );

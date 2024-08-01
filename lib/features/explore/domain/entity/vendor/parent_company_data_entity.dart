@@ -9,7 +9,7 @@ class ParentCompanyDataEntity extends Equatable {
   final int parentCompanyId;
   final String name;
   final String address;
-  final int rating;
+  final double rating;
   final String description;
   final String profileImg;
   final String coverImg;

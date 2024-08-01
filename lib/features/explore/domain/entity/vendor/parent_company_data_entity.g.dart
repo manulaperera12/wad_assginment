@@ -15,7 +15,7 @@ abstract class _$ParentCompanyDataEntityCWProxy {
 
   ParentCompanyDataEntity address(String address);
 
-  ParentCompanyDataEntity rating(int rating);
+  ParentCompanyDataEntity rating(double rating);
 
   ParentCompanyDataEntity description(String description);
 
@@ -34,7 +34,7 @@ abstract class _$ParentCompanyDataEntityCWProxy {
     int? parentCompanyId,
     String? name,
     String? address,
-    int? rating,
+    double? rating,
     String? description,
     String? profileImg,
     String? coverImg,
@@ -62,7 +62,7 @@ class _$ParentCompanyDataEntityCWProxyImpl
   ParentCompanyDataEntity address(String address) => this(address: address);
 
   @override
-  ParentCompanyDataEntity rating(int rating) => this(rating: rating);
+  ParentCompanyDataEntity rating(double rating) => this(rating: rating);
 
   @override
   ParentCompanyDataEntity description(String description) =>
@@ -114,7 +114,7 @@ class _$ParentCompanyDataEntityCWProxyImpl
       rating: rating == const $CopyWithPlaceholder() || rating == null
           ? _value.rating
           // ignore: cast_nullable_to_non_nullable
-          : rating as int,
+          : rating as double,
       description:
           description == const $CopyWithPlaceholder() || description == null
               ? _value.description

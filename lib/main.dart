@@ -81,7 +81,7 @@ class MyApp extends StatelessWidget {
           home: child,
         );
       },
-      child: const ExploreScreenWrapper(),
+      child: const ExploreScreen(),
     );
   }
 }

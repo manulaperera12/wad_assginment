@@ -64,7 +64,7 @@ class ParentCompanyDatum extends Equatable {
   final int? parentCompanyId;
   final String? name;
   final String? address;
-  final int? rating;
+  final double? rating;
   final String? description;
   final String? profileImg;
   final String? coverImg;
@@ -89,7 +89,7 @@ class ParentCompanyDatum extends Equatable {
         parentCompanyId: json["parent_company_id"],
         name: json["name"],
         address: json["address"],
-        rating: json["rating"],
+        rating: (json["rating"] as num).toDouble(),
         description: json["description"],
         profileImg: json["profile_img"],
         coverImg: json["cover_img"],
