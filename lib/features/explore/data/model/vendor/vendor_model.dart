@@ -25,15 +25,14 @@ class VendorModel extends Equatable {
   @override
   List<Object?> get props => [status, parentCompanyData];
 
-  factory VendorModel.fromJson(Map<String, dynamic> json) =>
-      VendorModel(
+  factory VendorModel.fromJson(Map<String, dynamic> json) => VendorModel(
         status: json["status"],
-        parentCompanyData: json["parentCompanyData"] == null ? [] : List<ParentCompanyDatum>.from(
-            json["parentCompanyData"]!.map((x) => ParentCompanyDatum.fromJson(x))),
+        parentCompanyData: json["parentCompanyData"] == null
+            ? []
+            : List<ParentCompanyDatum>.from(json["parentCompanyData"]!.map((x) => ParentCompanyDatum.fromJson(x))),
       );
 
-  Map<String, dynamic> toJson() =>
-      {
+  Map<String, dynamic> toJson() => {
         "status": status,
         "parentCompanyData": parentCompanyData == null ? [] : List<dynamic>.from(parentCompanyData!.map((x) => x.toJson())),
       };
@@ -41,20 +40,18 @@ class VendorModel extends Equatable {
   VendorEntity toEntity() {
     return VendorEntity(
       status: status ?? '',
-      parentCompanyDataEntity: List.from(
-          (parentCompanyData ?? []).map(
-                (parentCompanyData) => ParentCompanyDataEntity(
-              id: parentCompanyData.id ?? -9999,
-              parentCompanyId: parentCompanyData.parentCompanyId ?? -9999,
-              name: parentCompanyData.name ?? '',
-              address: parentCompanyData.address ?? '',
-              rating: parentCompanyData.rating ?? 0,
-              description: parentCompanyData.description ?? '',
-              profileImg: parentCompanyData.profileImg ?? '',
-              coverImg: parentCompanyData.coverImg ?? '',
-            ),
-          )
-      ),
+      parentCompanyDataEntity: List.from((parentCompanyData ?? []).map(
+        (parentCompanyData) => ParentCompanyDataEntity(
+          id: parentCompanyData.id ?? -9999,
+          parentCompanyId: parentCompanyData.parentCompanyId ?? -9999,
+          name: parentCompanyData.name ?? '',
+          address: parentCompanyData.address ?? '',
+          rating: parentCompanyData.rating ?? 0,
+          description: parentCompanyData.description ?? '',
+          profileImg: parentCompanyData.profileImg ?? '',
+          coverImg: parentCompanyData.coverImg ?? '',
+        ),
+      )),
     );
   }
 }
@@ -81,10 +78,18 @@ class ParentCompanyDatum extends Equatable {
   });
 
   @override
-  List<Object?> get props => [id, parentCompanyId, name, address, rating, description, profileImg, coverImg,];
+  List<Object?> get props => [
+        id,
+        parentCompanyId,
+        name,
+        address,
+        rating,
+        description,
+        profileImg,
+        coverImg,
+      ];
 
-  factory ParentCompanyDatum.fromJson(Map<String, dynamic> json) =>
-      ParentCompanyDatum(
+  factory ParentCompanyDatum.fromJson(Map<String, dynamic> json) => ParentCompanyDatum(
         id: json["id"],
         parentCompanyId: json["parent_company_id"],
         name: json["name"],
@@ -95,8 +100,7 @@ class ParentCompanyDatum extends Equatable {
         coverImg: json["cover_img"],
       );
 
-  Map<String, dynamic> toJson() =>
-      {
+  Map<String, dynamic> toJson() => {
         "id": id,
         "parent_company_id": parentCompanyId,
         "name": name,

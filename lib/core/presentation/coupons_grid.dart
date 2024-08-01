@@ -3,19 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:shimmer/shimmer.dart';
-import 'package:wad_interview_test/core/presentation/shimmers/basic_listview_shimmer.dart';
 import 'package:wad_interview_test/core/presentation/shimmers/grid_shimmer.dart';
 import 'package:wad_interview_test/core/presentation/shimmers/shimmer_builder.dart';
 import '../../../../util/colors.dart';
 import '../../../../util/font.dart';
-import '../../features/explore/domain/entity/coupons/coupon_data_entity.dart';
-import '../../features/explore/domain/entity/vendor/parent_company_data_entity.dart';
 import '../../features/explore/presentation/bloc/coupon/coupon_bloc.dart';
 import '../../features/explore/presentation/bloc/vendor/vendor_bloc.dart';
 import '../../features/vendor_profile/presentation/vendor_profile_screen.dart';
 import '../../util/injector.dart';
-import '../other/wait_while.dart';
 import 'error_widget_image.dart';
 
 class CouponsGridWrapper extends StatelessWidget {
@@ -48,18 +43,11 @@ class CouponsGridWrapper extends StatelessWidget {
 }
 
 class CouponsGrid extends StatefulWidget {
-  // final Function onTap;
   final bool showCoupons;
-
-  // final List<CouponDataEntity>? couponObjBluePrint;
-  // final List<ParentCompanyDataEntity>? vendorObjBluePrint;
 
   const CouponsGrid({
     super.key,
-    // required this.onTap,
     required this.showCoupons,
-    // this.couponObjBluePrint,
-    // this.vendorObjBluePrint,
   });
 
   @override
@@ -92,19 +80,21 @@ class _CouponsGridState extends State<CouponsGrid> {
         return BlocBuilder<VendorBloc, VendorState>(
           builder: (context, vendorState) {
             var itemCount = widget.showCoupons
-                ? couponState.couponList.length ?? 0
+                ? couponState.couponList.length
                 : vendorState.vendorEntity?.parentCompanyDataEntity.length ?? 0;
 
-            if (itemCount == 0 && ((couponBloc.state.status == CouponListStatus.loading || couponBloc.state.status == CouponListStatus.initial)|| (vendorBloc.state.status == VendorStatus.loading || vendorBloc.state.status == VendorStatus.initial)) ) {
-              // Display message when there are no items
+            if (itemCount == 0 &&
+                ((couponBloc.state.status == CouponListStatus.loading || couponBloc.state.status == CouponListStatus.initial) ||
+                    (vendorBloc.state.status == VendorStatus.loading || vendorBloc.state.status == VendorStatus.initial))) {
               return const GridShimmer();
-            } else if (itemCount == 0 && ((couponBloc.state.status == CouponListStatus.failure) || (vendorBloc.state.status == VendorStatus.failure)) ) {
+            } else if (itemCount == 0 &&
+                ((couponBloc.state.status == CouponListStatus.failure) || (vendorBloc.state.status == VendorStatus.failure))) {
               return ErrorWidgetImage(
                 width: 100.w,
                 height: 100.h,
                 loading: false,
               );
-            } else if (itemCount == 0){
+            } else if (itemCount == 0) {
               const Center(child: Text("No items available"));
             }
 
@@ -122,38 +112,34 @@ class _CouponsGridState extends State<CouponsGrid> {
                 ),
                 padding: EdgeInsets.all(10.w),
                 itemBuilder: (context, index) {
-                  final coupon = widget.showCoupons
-                      ? couponState.couponList[index]
-                      : null;
-                  final vendor = !widget.showCoupons
-                      ? vendorState.vendorEntity?.parentCompanyDataEntity[index]
-                      : null;
+                  final coupon = widget.showCoupons ? couponState.couponList[index] : null;
+                  final vendor = !widget.showCoupons ? vendorState.vendorEntity?.parentCompanyDataEntity[index] : null;
 
-                  return InkWell(
-                    onTap: !widget.showCoupons ? () {
+                  return GestureDetector(
+                    onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
-                           VendorProfileScreen(
-                            imagePath: widget.showCoupons ?
-                            "https://staging-admin.slashdeals.lk${coupon?.parentCompanyProfileImg}"
+                          builder: (context) => VendorProfileScreen(
+                            imagePath: widget.showCoupons
+                                ? "https://staging-admin.slashdeals.lk${coupon?.parentCompanyProfileImg}"
                                 : "https://staging-admin.slashdeals.lk${vendor?.profileImg}",
-                            title: widget.showCoupons ? (coupon?.parentCompanyName ?? 'N/A')
-                                .split(" ") // Split the name into words
-                                .take(2) // Take the first two words
-                                .join(" ")
-                                : (vendor?.name ?? 'N/A').split(" ") // Split the name into words
-                                .take(2) // Take the first two words
-                                .join(" "),
-                             description: widget.showCoupons ? (coupon?.description ?? "N/A") : (vendor?.description ?? "N/A"),
-                             rating: vendor?.rating.toStringAsFixed(1) ?? 'N/A',
+                            title: widget.showCoupons
+                                ? (coupon?.parentCompanyName ?? 'N/A')
+                                    .split(" ") // Split the name into words
+                                    .take(2) // Take the first two words
+                                    .join(" ")
+                                : (vendor?.name ?? 'N/A')
+                                    .split(" ") // Split the name into words
+                                    .take(2) // Take the first two words
+                                    .join(" "),
+                            description: widget.showCoupons ? (coupon?.description ?? "N/A") : (vendor?.description ?? "N/A"),
+                            rating: vendor?.rating.toStringAsFixed(1) ?? '4.5',
                           ),
                         ),
                       );
-
-                    } : () {},
-                    borderRadius: BorderRadius.all(Radius.circular(10.r)),
+                    },
+                    // borderRadius: BorderRadius.all(Radius.circular(10.r)),
                     child: Container(
                       width: 176.w,
                       clipBehavior: Clip.antiAlias,
@@ -169,12 +155,12 @@ class _CouponsGridState extends State<CouponsGrid> {
                             clipBehavior: Clip.none,
                             children: [
                               Container(
-                                height: 52.h,
+                                height: 55.h,
                                 width: double.infinity,
                                 color: kWhiteColor,
                                 child: CachedNetworkImage(
-                                  imageUrl: widget.showCoupons ?
-                                  "https://staging-admin.slashdeals.lk${coupon?.parentCompanyCoverImg}"
+                                  imageUrl: widget.showCoupons
+                                      ? "https://staging-admin.slashdeals.lk${coupon?.parentCompanyCoverImg}"
                                       : "https://staging-admin.slashdeals.lk${vendor?.coverImg}",
                                   placeholder: (context, url) => shimmerLoader(),
                                   errorWidget: (context, url, error) => Image.asset('assets/images/cover.png', fit: BoxFit.cover),
@@ -184,7 +170,7 @@ class _CouponsGridState extends State<CouponsGrid> {
                                 // child: Image.asset('assets/images/cover.png', fit: BoxFit.cover),
                               ),
                               Positioned(
-                                top: 8.h,
+                                top: 10.h,
                                 left: 10.w,
                                 child: Container(
                                   width: 70.w,
@@ -202,32 +188,29 @@ class _CouponsGridState extends State<CouponsGrid> {
                                       )
                                     ],
                                   ),
-                                  child: InkWell(
-                                    onTap: () {},
-                                    child: CircleAvatar(
-                                      backgroundColor: kWhiteColor,
-                                      radius: 27.0.r,
-                                      child: ClipOval(
-                                        child: CachedNetworkImage(
-                                          imageUrl:
-                                          widget.showCoupons ?
-                                          "https://staging-admin.slashdeals.lk${coupon?.parentCompanyProfileImg}"
-                                              : "https://staging-admin.slashdeals.lk${vendor?.profileImg}",
-                                          placeholder: (context, url) => shimmerLoader(child: Container(
-                                            width: 60.w,
-                                            height: 60.h,
-                                            decoration: const BoxDecoration(
-                                              color: kWhiteColor,
-                                              shape: BoxShape.circle,
-                                            ),
-                                          )),
-                                          errorWidget: (context, url, error) =>
-                                              Image.asset('assets/images/error_img.png', fit: BoxFit.cover),
-                                          useOldImageOnUrlChange: true,
-                                          fit: BoxFit.cover,
-                                        ),
-                                        // child: Image.asset('assets/images/profile_star.png', fit: BoxFit.cover),
+                                  child: CircleAvatar(
+                                    backgroundColor: kWhiteColor,
+                                    radius: 27.0.r,
+                                    child: ClipOval(
+                                      child: CachedNetworkImage(
+                                        imageUrl: widget.showCoupons
+                                            ? "https://staging-admin.slashdeals.lk${coupon?.parentCompanyProfileImg}"
+                                            : "https://staging-admin.slashdeals.lk${vendor?.profileImg}",
+                                        placeholder: (context, url) => shimmerLoader(
+                                            child: Container(
+                                          width: 60.w,
+                                          height: 60.h,
+                                          decoration: const BoxDecoration(
+                                            color: kWhiteColor,
+                                            shape: BoxShape.circle,
+                                          ),
+                                        )),
+                                        errorWidget: (context, url, error) =>
+                                            Image.asset('assets/images/error_img.png', fit: BoxFit.cover),
+                                        useOldImageOnUrlChange: true,
+                                        fit: BoxFit.cover,
                                       ),
+                                      // child: Image.asset('assets/images/profile_star.png', fit: BoxFit.cover),
                                     ),
                                   ),
                                 ),
@@ -241,13 +224,15 @@ class _CouponsGridState extends State<CouponsGrid> {
                                     SizedBox(
                                       width: 170.w,
                                       child: Text(
-                                        widget.showCoupons ? (coupon?.parentCompanyName ?? 'N/A')
-                                            .split(" ") // Split the name into words
-                                            .take(2) // Take the first two words
-                                            .join(" ")
-                                            : (vendor?.name ?? 'N/A').split(" ") // Split the name into words
-                                            .take(2) // Take the first two words
-                                            .join(" "), // Join them with a space
+                                        widget.showCoupons
+                                            ? (coupon?.parentCompanyName ?? 'N/A')
+                                                .split(" ") // Split the name into words
+                                                .take(2) // Take the first two words
+                                                .join(" ")
+                                            : (vendor?.name ?? 'N/A')
+                                                .split(" ") // Split the name into words
+                                                .take(2) // Take the first two words
+                                                .join(" "), // Join them with a space
                                         style: kBarlow500(context),
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
@@ -259,26 +244,26 @@ class _CouponsGridState extends State<CouponsGrid> {
                                         padding: EdgeInsets.symmetric(vertical: 10.0.h),
                                         child: RichText(
                                             text: TextSpan(children: [
-                                              TextSpan(
-                                                style: kBarlow700(context, color: kPrimaryTextColor),
-                                                text: "Save ",
+                                          TextSpan(
+                                            style: kBarlow700(context, color: kPrimaryTextColor),
+                                            text: "Save ",
+                                          ),
+                                          TextSpan(
+                                            style: kBarlow700(
+                                              context,
+                                              color: kPurpleColor,
+                                              fontSize: 28.sp,
+                                            ),
+                                            text: coupon?.value.toString(),
+                                          ),
+                                          TextSpan(
+                                              style: kBarlow300(
+                                                context,
+                                                color: kPurpleColor,
+                                                fontSize: 12.sp,
                                               ),
-                                              TextSpan(
-                                                style: kBarlow700(
-                                                  context,
-                                                  color: kPurpleColor,
-                                                  fontSize: 28.sp,
-                                                ),
-                                                text: coupon?.value.toString(),
-                                              ),
-                                              TextSpan(
-                                                  style: kBarlow300(
-                                                    context,
-                                                    color: kPurpleColor,
-                                                    fontSize: 12.sp,
-                                                  ),
-                                                  text: "LKR")
-                                            ])),
+                                              text: "LKR")
+                                        ])),
                                       ),
                                     ),
                                     Padding(
@@ -292,7 +277,7 @@ class _CouponsGridState extends State<CouponsGrid> {
                                             color: kSecondaryTextColor,
                                             fontSize: 14.sp,
                                           ),
-                                          maxLines: 3,
+                                          maxLines: widget.showCoupons ? 3 : 2,
                                           overflow: TextOverflow.ellipsis,
                                         ),
                                       ),
@@ -319,7 +304,6 @@ class _CouponsGridState extends State<CouponsGrid> {
                                               color: kYellowColor,
                                               size: 25.h,
                                             ),
-
                                           ],
                                         ),
                                       ),

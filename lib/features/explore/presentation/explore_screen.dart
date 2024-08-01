@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wad_interview_test/features/explore/data/model/coupon/coupon_model.dart';
-import 'package:wad_interview_test/features/explore/data/model/coupon/coupon_model.dart';
-import 'package:wad_interview_test/features/explore/presentation/bloc/coupon/coupon_bloc.dart';
-import 'package:wad_interview_test/features/explore/presentation/bloc/vendor/vendor_bloc.dart';
 import 'package:wad_interview_test/features/explore/presentation/widgets/toggle_button.dart';
-import '../../../core/other/wait_while.dart';
 import '../../../core/presentation/back_button.dart';
 import '../../../core/presentation/coupons_grid.dart';
 import '../../../core/presentation/custom_header.dart';
@@ -16,37 +10,12 @@ import '../../../core/presentation/divider.dart';
 import '../../../core/presentation/sliver_bar_app_delegate.dart';
 import '../../../util/colors.dart';
 import '../../../util/font.dart';
-import '../../../util/injector.dart';
-import '../../vendor_profile/presentation/vendor_profile_screen.dart';
-
-// class ExploreScreenWrapper extends StatelessWidget {
-//
-//   const ExploreScreenWrapper({super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return MultiBlocProvider(
-//       providers: [
-//         BlocProvider<VendorBloc>(
-//           create: (context) => sl<VendorBloc>(),
-//         ),
-//
-//         BlocProvider<CouponBloc>(
-//           create: (context) => sl<CouponBloc>(),
-//         ),
-//       ],
-//       child: const ExploreScreen(),
-//     );
-//   }
-// }
 
 class ExploreScreen extends StatefulWidget {
   const ExploreScreen({super.key});
 
   @override
   State<ExploreScreen> createState() => _ExploreScreenState();
-
-
 }
 
 class _ExploreScreenState extends State<ExploreScreen> {
@@ -69,8 +38,6 @@ class _ExploreScreenState extends State<ExploreScreen> {
   @override
   void initState() {
     super.initState();
-    // context.read<CouponBloc>().add(const InitialCouponListEvent());
-    // context.read<VendorBloc>().add(const GetVendorEventDataEvent());
   }
 
   @override
@@ -171,21 +138,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                         duration: const Duration(milliseconds: 300),
                         child: CouponsGridWrapper(
                           key: ValueKey<bool>(isLeftActive),
-                          // onTap: () {
-                          //   Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //       builder: (context) =>
-                          //       const VendorProfileScreen(
-                          //         imagePath: "assets/images/profile_star.png",
-                          //         title: "Company Name",
-                          //       ),
-                          //     ),
-                          //   );
-                          // },
                           showCoupons: isLeftActive,
-                          // couponObjBluePrint: couponState.couponList,
-                          // vendorObjBluePrint: vendorState.vendorEntity?.parentCompanyDataEntity,
                         ),
                       ),
                     ],

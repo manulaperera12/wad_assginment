@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:wad_interview_test/features/explore/data/model/vendor/vendor_model.dart';
-
 import '../../../../../core/errors/exceptions.dart';
 import '../../../../../core/network/dio_client.dart';
 import '../../../../../util/api_endpoints.dart';

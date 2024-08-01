@@ -9,24 +9,19 @@ import '../../../../../core/usecase/usecase.dart';
 import '../../../domain/entity/coupons/coupon_data_entity.dart';
 import '../../../domain/usecase/coupon/coupon_usecase.dart';
 
-
 part 'coupon_event.dart';
+
 part 'coupon_state.dart';
 
 class CouponBloc extends Bloc<CouponEvent, CouponState> {
   final GetCouponUseCase couponUseCase;
 
-  // CouponBloc({required this.couponUseCase}) : super(const CouponState(status: CouponListStatus.initial)) {
-  //   on<InitialCouponListEvent>(_openInitialCouponListEvent, transformer: Transformer.throttleDroppable());
-  // }
-
   CouponBloc({
     required this.couponUseCase,
   }) : super(const CouponState(
-    status: CouponListStatus.initial,
-  )) {
+          status: CouponListStatus.initial,
+        )) {
     on<InitialCouponListEvent>(_openInitialCouponListEvent, transformer: Transformer.throttleDroppable());
-    // on<GetCouponList>(_getCouponList, transformer: Transformer.throttleRestartable());
   }
 
   Future<FutureOr<void>> _openInitialCouponListEvent(InitialCouponListEvent event, Emitter<CouponState> emit) async {
@@ -38,7 +33,7 @@ class CouponBloc extends Bloc<CouponEvent, CouponState> {
 
     Either<Failure, CouponsEntity> result = await couponUseCase(NoParams());
     result.fold(
-          (failure) {
+      (failure) {
         String message = '';
         if (failure is ServerFailure) {
           message = failure.message;
@@ -52,7 +47,7 @@ class CouponBloc extends Bloc<CouponEvent, CouponState> {
           errorMessage: message,
         ));
       },
-          (dataList) {
+      (dataList) {
         emit(state.copyWith(
           status: CouponListStatus.success,
           couponList: dataList.couponDataEntity,
@@ -60,5 +55,4 @@ class CouponBloc extends Bloc<CouponEvent, CouponState> {
       },
     );
   }
-
 }

@@ -40,7 +40,7 @@ class Bounce extends StatefulWidget {
   final Widget child;
 
   const Bounce({
-    Key? key,
+    super.key,
     required this.onTap,
     required this.child,
     this.onTapUp,
@@ -59,8 +59,7 @@ class Bounce extends StatefulWidget {
   })  : assert(
   scaleFactor >= 0.0 && scaleFactor <= 1.0,
   "The valid range of scaleFactor is from 0.0 to 1.0.",
-  ),
-        super(key: key);
+  );
 
   @override
   BounceState createState() => BounceState();

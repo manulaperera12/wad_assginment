@@ -21,10 +21,12 @@ class SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
 
   @override
   Widget build(
-      BuildContext context,
-      double shrinkOffset,
-      bool overlapsContent,
-      ) {return SizedBox.expand(child: child);}
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
+    return SizedBox.expand(child: child);
+  }
 
   @override
   bool shouldRebuild(SliverAppBarDelegate oldDelegate) {

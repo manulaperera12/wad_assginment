@@ -1,45 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:wad_interview_test/core/presentation/shimmers/shimmer_builder.dart';
-
 import '../../../util/colors.dart';
-import '../../../util/font.dart';
 
-// class GridShimmer extends StatelessWidget {
-//   const GridShimmer({super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       color: backgroundColor,
-//       child: GridView.builder(
-//         physics: const NeverScrollableScrollPhysics(),
-//         shrinkWrap: true,
-//         itemCount: 10,
-//         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-//           crossAxisCount: 2,
-//           crossAxisSpacing: 17.w,
-//           mainAxisSpacing: 16.h,
-//           childAspectRatio: 0.8.h,
-//         ),
-//         padding: EdgeInsets.all(10.w),
-//         itemBuilder: (context, index) {
-//           return Container(
-//             width: 176.w,
-//             clipBehavior: Clip.antiAlias,
-//             decoration: BoxDecoration(
-//               color: kWhiteColor,
-//               borderRadius: BorderRadius.all(Radius.circular(10.r)),
-//             ),
-//             child: shimmerLoader(),
-//           );
-//         },
-//       ),
-//     );
-//   }
-// }
 
 class GridShimmer extends StatelessWidget {
   const GridShimmer({super.key});

@@ -17,7 +17,10 @@ class GetCouponList extends CouponEvent {
   final CouponsEntity couponsEntity;
   final CouponDataEntity couponDataEntity;
 
-  const GetCouponList({required this.couponsEntity, required this.couponDataEntity,});
+  const GetCouponList({
+    required this.couponsEntity,
+    required this.couponDataEntity,
+  });
 
   @override
   List<Object> get props => [couponsEntity, couponDataEntity];

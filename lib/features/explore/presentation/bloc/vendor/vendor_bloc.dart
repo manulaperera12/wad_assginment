@@ -9,11 +9,11 @@ import '../../../domain/entity/vendor/vendor_entity.dart';
 import '../../../domain/usecase/vendor/vendor_usecase.dart';
 
 part 'vendor_event.dart';
+
 part 'vendor_state.dart';
 
 class VendorBloc extends Bloc<VendorEvent, VendorState> {
   final VendorUseCase vendorUseCase;
-
 
   VendorBloc({required this.vendorUseCase}) : super(const VendorState()) {
     on<GetVendorEventDataEvent>(_onGetVendorEventDataEvent, transformer: Transformer.throttleDroppable());
@@ -50,5 +50,4 @@ class VendorBloc extends Bloc<VendorEvent, VendorState> {
       },
     );
   }
-
 }

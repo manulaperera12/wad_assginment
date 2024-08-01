@@ -2,7 +2,6 @@ part of 'vendor_bloc.dart';
 
 enum VendorStatus { initial, loading, success, failure }
 
-
 class VendorState extends Equatable {
   final VendorStatus status;
   final String? errorMessage;

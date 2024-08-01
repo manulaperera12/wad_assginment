@@ -13,26 +13,26 @@ import 'package:wad_interview_test/features/explore/presentation/bloc/vendor/ven
 import '../core/network/dio_client.dart';
 import '../core/network/network_info.dart';
 import '../features/explore/data/datasource/coupon/coupon_local_datasource.dart';
-import '../features/explore/data/repository/coupon/coupon_repository_Impl.dart';
+import '../features/explore/data/repository/coupon/coupon_repository_impl.dart';
 import '../features/explore/data/repository/vendor/vendor_repository_impl.dart';
 import '../features/explore/domain/usecase/vendor/vendor_usecase.dart';
 
 final sl = GetIt.instance;
 
 Future<void> setupLocators() async {
-
   /// Feature: coupon
   // Blocs
   sl.registerFactory<CouponBloc>(() => CouponBloc(couponUseCase: sl()));
   // Use Cases
   sl.registerLazySingleton<GetCouponUseCase>(() => GetCouponUseCase(couponRepository: sl()));
   // Repositories
-  sl.registerLazySingleton<CouponRepository>(() => CouponRepositoryImpl(networkInfo: sl(), couponLocalDataSource: sl(), couponRemoteDatasource: sl()));
+  sl.registerLazySingleton<CouponRepository>(
+      () => CouponRepositoryImpl(networkInfo: sl(), couponLocalDataSource: sl(), couponRemoteDatasource: sl()));
   // Data Sources
   sl.registerLazySingleton<CouponRemoteDatasource>(() => CouponRemoteRemoteDataSourceImpl(dioClient: sl()));
   sl.registerLazySingleton<CouponLocalDataSource>(() => CouponLocalDataSourceImpl(sharedPreferences: sl()));
 
-  /// Feature: coupon
+  /// Feature: vendor
   // Blocs
   sl.registerFactory<VendorBloc>(() => VendorBloc(vendorUseCase: sl()));
   // Use Cases
@@ -41,7 +41,6 @@ Future<void> setupLocators() async {
   sl.registerLazySingleton<VendorRepository>(() => VendorRepositoryImpl(networkInfo: sl(), vendorRemoteDataSource: sl()));
   // Data Sources
   sl.registerLazySingleton<VendorRemoteDataSource>(() => VendorRemoteDataSourceImpl(dioClient: sl()));
-
 
   /// Network
   sl.registerFactory<Dio>(() => Dio());

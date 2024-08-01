@@ -1,10 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../core/presentation/bounce_widget.dart';
 import '../../../core/presentation/coupons_grid.dart';
-import '../../../core/presentation/shimmers/shimmer_builder.dart';
 import '../../../util/colors.dart';
 import '../../../util/font.dart';
 
@@ -14,7 +12,8 @@ class VendorProfileScreen extends StatefulWidget {
   final String imagePath;
   final String rating;
 
-  const VendorProfileScreen({super.key, required this.title, required this.imagePath, required this.description, required this.rating});
+  const VendorProfileScreen(
+      {super.key, required this.title, required this.imagePath, required this.description, required this.rating});
 
   @override
   State<VendorProfileScreen> createState() => _VendorProfileScreenState();
@@ -187,7 +186,7 @@ class _VendorProfileScreenState extends State<VendorProfileScreen> {
                                           BoxShadow(
                                             color: isSelected ? kPurpleShadowColor : kButtonShadowColor,
                                             offset: const Offset(4, 3),
-                                            blurRadius: isSelected ? 15.r :4.r,
+                                            blurRadius: isSelected ? 15.r : 4.r,
                                             spreadRadius: 3,
                                           ),
                                         ],
@@ -216,7 +215,9 @@ class _VendorProfileScreenState extends State<VendorProfileScreen> {
                   ),
 
                   /// coupon grid
-                  CouponsGridWrapper(showCoupons: true,),
+                  const CouponsGridWrapper(
+                    showCoupons: true,
+                  ),
                 ],
               ),
             ),

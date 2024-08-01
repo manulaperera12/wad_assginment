@@ -15,7 +15,6 @@ const kYellowColor = Color(0xffffe400);
 const kHeartNotActive = Color(0xffe0e0e0);
 const kDividerColor = Color(0xffe0dfdf);
 const kBottomNavShadowColor = Color(0x15000000);
-const kRedColor = Color.fromRGBO(200, 69, 69, 1); ///TODO: Change this color to HEX
-
+const kRedColor = Color.fromRGBO(200, 69, 69, 1);
 const backgroundColor = Color(0xfff2f5fe);
 const kCouponGoldPackageBg = Color(0xff323666);

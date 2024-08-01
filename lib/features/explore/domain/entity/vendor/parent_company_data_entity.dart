@@ -26,5 +26,14 @@ class ParentCompanyDataEntity extends Equatable {
   });
 
   @override
-  List<Object> get props => [id, parentCompanyId, name, address, rating, description, profileImg, coverImg,];
+  List<Object> get props => [
+        id,
+        parentCompanyId,
+        name,
+        address,
+        rating,
+        description,
+        profileImg,
+        coverImg,
+      ];
 }

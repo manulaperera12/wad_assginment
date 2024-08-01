@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:wad_interview_test/core/presentation/shimmers/shimmer_builder.dart';
 import 'package:wad_interview_test/util/colors.dart';
 
@@ -40,8 +39,8 @@ class ErrorWidgetImage extends StatelessWidget {
       child: loading && value == null
           ? ClipRRect(
               borderRadius: borderRadius ?? BorderRadius.all(Radius.circular(0.r)),
-              child: shimmerLoader(
-                  baseColor: kDividerColor.withOpacity(0.3), highlightColor: kSecondaryTextColor.withOpacity(0.6)),
+              child:
+                  shimmerLoader(baseColor: kDividerColor.withOpacity(0.3), highlightColor: kSecondaryTextColor.withOpacity(0.6)),
             )
           : Center(
               child: SizedBox(

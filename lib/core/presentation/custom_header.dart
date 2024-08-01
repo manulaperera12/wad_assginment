@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:wad_interview_test/util/colors.dart';
-
 import '../../util/font.dart';
 import 'bounce_widget.dart';
 
@@ -74,23 +73,24 @@ class CustomHeader extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerRight,
                   child: GestureDetector(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: SizedBox(
-                        height: 24.h,
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: SizedBox(
+                      height: 24.h,
+                      width: 24.w,
+                      child: SvgPicture.asset(
+                        'assets/icons/filter_icon.svg',
                         width: 24.w,
-                        child: SvgPicture.asset(
-                          'assets/icons/filter_icon.svg',
-                          width: 24.w,
-                          height: 24.w,
-                          fit: BoxFit.none,
-                          colorFilter: const ColorFilter.mode(
-                            kBlackColor,
-                            BlendMode.srcIn,
-                          ),
+                        height: 24.w,
+                        fit: BoxFit.none,
+                        colorFilter: const ColorFilter.mode(
+                          kBlackColor,
+                          BlendMode.srcIn,
                         ),
-                      ),),
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),

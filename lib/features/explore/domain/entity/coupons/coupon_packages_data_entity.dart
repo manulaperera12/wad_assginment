@@ -33,6 +33,6 @@ class CouponPackagesDataEntity extends Equatable {
         createdAt,
         updatedAt,
         deletedAt,
-    packageDataEntity,
+        packageDataEntity,
       ];
 }

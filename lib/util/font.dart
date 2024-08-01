@@ -1,12 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'colors.dart';
 
 /// Barlow
-TextStyle kBarlow300(BuildContext context, {Color color = kPrimaryTextColor, double? fontSize, double? height}) =>
-    TextStyle(
+TextStyle kBarlow300(BuildContext context, {Color color = kPrimaryTextColor, double? fontSize, double? height}) => TextStyle(
       fontFamily: 'Barlow',
       color: color,
       fontSize: fontSize ?? 18.sp,
@@ -14,8 +12,8 @@ TextStyle kBarlow300(BuildContext context, {Color color = kPrimaryTextColor, dou
       fontStyle: FontStyle.normal,
       height: height,
     );
-TextStyle kBarlow400(BuildContext context, {Color color = kPrimaryTextColor, double? fontSize, double? height}) =>
-    TextStyle(
+
+TextStyle kBarlow400(BuildContext context, {Color color = kPrimaryTextColor, double? fontSize, double? height}) => TextStyle(
       fontFamily: 'Barlow',
       color: color,
       fontSize: fontSize ?? 18.sp,
@@ -24,8 +22,7 @@ TextStyle kBarlow400(BuildContext context, {Color color = kPrimaryTextColor, dou
       height: height,
     );
 
-TextStyle kBarlow500(BuildContext context, {Color color = kPrimaryTextColor, double? fontSize}) =>
-    TextStyle(
+TextStyle kBarlow500(BuildContext context, {Color color = kPrimaryTextColor, double? fontSize}) => TextStyle(
       fontFamily: 'Barlow',
       color: color,
       fontSize: fontSize ?? 18.sp,
@@ -33,8 +30,7 @@ TextStyle kBarlow500(BuildContext context, {Color color = kPrimaryTextColor, dou
       fontStyle: FontStyle.normal,
     );
 
-TextStyle kBarlow600(BuildContext context, {Color color = kPrimaryTextColor, double? fontSize}) =>
-    TextStyle(
+TextStyle kBarlow600(BuildContext context, {Color color = kPrimaryTextColor, double? fontSize}) => TextStyle(
       fontFamily: 'Barlow',
       color: color,
       fontSize: fontSize ?? 18.sp,
@@ -42,8 +38,7 @@ TextStyle kBarlow600(BuildContext context, {Color color = kPrimaryTextColor, dou
       fontStyle: FontStyle.normal,
     );
 
-TextStyle kBarlow700(BuildContext context, {Color color = kPrimaryTextColor, double? fontSize}) =>
-    TextStyle(
+TextStyle kBarlow700(BuildContext context, {Color color = kPrimaryTextColor, double? fontSize}) => TextStyle(
       fontFamily: 'Barlow',
       color: color,
       fontSize: fontSize ?? 18.sp,
@@ -52,8 +47,7 @@ TextStyle kBarlow700(BuildContext context, {Color color = kPrimaryTextColor, dou
     );
 
 /// Poppins
-TextStyle kPoppins400(BuildContext context, {Color color = kPrimaryTextColor, double? fontSize}) =>
-    TextStyle(
+TextStyle kPoppins400(BuildContext context, {Color color = kPrimaryTextColor, double? fontSize}) => TextStyle(
       fontFamily: 'Poppins',
       color: color,
       fontSize: fontSize ?? 18.sp,
@@ -61,8 +55,7 @@ TextStyle kPoppins400(BuildContext context, {Color color = kPrimaryTextColor, do
       fontStyle: FontStyle.normal,
     );
 
-TextStyle kPoppins500(BuildContext context, {Color color = kPrimaryTextColor, double? fontSize}) =>
-    TextStyle(
+TextStyle kPoppins500(BuildContext context, {Color color = kPrimaryTextColor, double? fontSize}) => TextStyle(
       fontFamily: "Poppins",
       color: color,
       fontWeight: FontWeight.w500,
@@ -70,12 +63,10 @@ TextStyle kPoppins500(BuildContext context, {Color color = kPrimaryTextColor, do
       fontSize: fontSize ?? 16.sp,
     );
 
-TextStyle kPoppins600(BuildContext context, {Color color = kPrimaryTextColor, double? fontSize}) =>
-    TextStyle(
+TextStyle kPoppins600(BuildContext context, {Color color = kPrimaryTextColor, double? fontSize}) => TextStyle(
       color: color,
       fontWeight: FontWeight.w600,
       fontFamily: "Poppins",
       fontStyle: FontStyle.normal,
       fontSize: fontSize ?? 22.sp,
     );
-
