@@ -5,8 +5,7 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
-import 'package:wad_interview_test/features/explore/domain/entity/coupons/coupon_data_entity.dart';
-
+import '../../../domain/entity/coupons/coupon_data_entity.dart';
 import '../../../domain/entity/coupons/coupon_packages_data_entity.dart';
 import '../../../domain/entity/coupons/coupons_entity.dart';
 import '../../../domain/entity/coupons/package_data_entity.dart';

@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
-import 'package:wad_interview_test/features/explore/data/datasource/coupon/coupon_local_datasource.dart';
-import 'package:wad_interview_test/features/explore/data/datasource/coupon/coupon_remote_datasource.dart';
 import '../../../../../core/errors/exceptions.dart';
 import '../../../../../core/errors/failures.dart';
 import '../../../../../core/network/network_info.dart';
 import '../../../domain/entity/coupons/coupons_entity.dart';
 import '../../../domain/repository/coupons/coupon_repository.dart';
+import '../../datasource/coupon/coupon_local_datasource.dart';
+import '../../datasource/coupon/coupon_remote_datasource.dart';
 
 class CouponRepositoryImpl implements CouponRepository {
   final CouponLocalDataSource couponLocalDataSource;

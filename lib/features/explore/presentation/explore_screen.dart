@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wad_interview_test/features/explore/presentation/widgets/toggle_button.dart';
+import 'package:wad_assignment_manula/features/explore/presentation/widgets/toggle_button.dart';
 import '../../../core/presentation/back_button.dart';
 import '../../../core/presentation/coupons_grid.dart';
 import '../../../core/presentation/custom_header.dart';

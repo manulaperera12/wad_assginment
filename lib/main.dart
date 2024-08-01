@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wad_interview_test/util/injector.dart';
+import 'package:wad_assignment_manula/util/injector.dart';
 import 'core/blocs/bloc_observer.dart';
 import 'features/explore/presentation/explore_screen.dart';
 

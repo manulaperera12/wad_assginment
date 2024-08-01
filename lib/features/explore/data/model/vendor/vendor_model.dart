@@ -5,9 +5,8 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
-import 'package:wad_interview_test/features/explore/domain/entity/vendor/vendor_entity.dart';
-
 import '../../../domain/entity/vendor/parent_company_data_entity.dart';
+import '../../../domain/entity/vendor/vendor_entity.dart';
 
 VendorModel vendorModelFromJson(String str) => VendorModel.fromJson(json.decode(str));
 

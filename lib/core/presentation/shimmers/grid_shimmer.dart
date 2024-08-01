@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wad_interview_test/core/presentation/shimmers/shimmer_builder.dart';
+import 'package:wad_assignment_manula/core/presentation/shimmers/shimmer_builder.dart';
 import '../../../util/colors.dart';
 
 

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:wad_interview_test/core/blocs/event_transformer.dart';
+import '../../../../../core/blocs/event_transformer.dart';
 import '../../../../../core/errors/failures.dart';
 import '../../../../../core/usecase/usecase.dart';
 import '../../../domain/entity/vendor/vendor_entity.dart';

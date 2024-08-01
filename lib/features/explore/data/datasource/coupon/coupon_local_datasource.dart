@@ -1,7 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:wad_interview_test/features/explore/data/model/coupon/coupon_model.dart';
 import '../../../../../core/errors/exceptions.dart';
 import '../../../../../util/strings/shared_preferences_keys.dart';
+import '../../model/coupon/coupon_model.dart';
 
 abstract class CouponLocalDataSource {
   Future<CouponsModel> getCachedCoupons();

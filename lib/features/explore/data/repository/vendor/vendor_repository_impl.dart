@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
-import 'package:wad_interview_test/features/explore/data/datasource/vendor/vendor_remote_data_source.dart';
-import 'package:wad_interview_test/features/explore/domain/entity/vendor/vendor_entity.dart';
-import 'package:wad_interview_test/features/explore/domain/repository/vendor/vendor_repository.dart';
 import '../../../../../core/errors/exceptions.dart';
 import '../../../../../core/errors/failures.dart';
 import '../../../../../core/network/network_info.dart';
+import '../../../domain/entity/vendor/vendor_entity.dart';
+import '../../../domain/repository/vendor/vendor_repository.dart';
+import '../../datasource/vendor/vendor_remote_data_source.dart';
 
 class VendorRepositoryImpl implements VendorRepository {
   final VendorRemoteDataSource vendorRemoteDataSource;

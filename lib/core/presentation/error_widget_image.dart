@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wad_interview_test/core/presentation/shimmers/shimmer_builder.dart';
-import 'package:wad_interview_test/util/colors.dart';
+
+import '../../util/colors.dart';
+import 'shimmers/shimmer_builder.dart';
 
 class ErrorWidgetImage extends StatelessWidget {
   final EdgeInsetsGeometry? padding;

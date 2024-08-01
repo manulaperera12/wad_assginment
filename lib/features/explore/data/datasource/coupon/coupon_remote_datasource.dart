@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:wad_interview_test/features/explore/data/model/coupon/coupon_model.dart';
 import '../../../../../core/errors/exceptions.dart';
 import '../../../../../core/network/dio_client.dart';
 import '../../../../../util/api_endpoints.dart';
+import '../../model/coupon/coupon_model.dart';
 
 abstract class CouponRemoteDatasource {
   Future<CouponsModel> getCoupons();

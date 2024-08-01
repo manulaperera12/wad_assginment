@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:wad_interview_test/util/colors.dart';
+import '../../util/colors.dart';
 import '../../util/font.dart';
 import 'bounce_widget.dart';
 

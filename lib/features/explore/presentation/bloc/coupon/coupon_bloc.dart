@@ -2,11 +2,11 @@ import 'dart:async';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:wad_interview_test/core/blocs/event_transformer.dart';
-import 'package:wad_interview_test/features/explore/domain/entity/coupons/coupons_entity.dart';
+import '../../../../../core/blocs/event_transformer.dart';
 import '../../../../../core/errors/failures.dart';
 import '../../../../../core/usecase/usecase.dart';
 import '../../../domain/entity/coupons/coupon_data_entity.dart';
+import '../../../domain/entity/coupons/coupons_entity.dart';
 import '../../../domain/usecase/coupon/coupon_usecase.dart';
 
 part 'coupon_event.dart';
