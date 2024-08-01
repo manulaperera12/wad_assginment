@@ -39,7 +39,7 @@ class GridShimmer extends StatelessWidget {
                   children: [
                     shimmerLoader(child: Container(
                       height: 52.h,
-                      color: kWhiteColor,
+                      color: Colors.red,
                     ),),
                     Positioned(
                       top: 8.h,
@@ -76,49 +76,64 @@ class GridShimmer extends StatelessWidget {
                         ),
                       ),
                     ),
-                    // Positioned(
-                    //   top: 90.h,
-                    //   left: 10.w,
-                    //   child: Column(
-                    //     crossAxisAlignment: CrossAxisAlignment.start,
-                    //     children: [
-                    //       SizedBox(
-                    //         width: 170.w,
-                    //         child: shimmerLoader(child: Container(
-                    //           width: 170.w.w,
-                    //           // height: 16.h,
-                    //           color: kWhiteColor,
-                    //         ),),
-                    //       ),
-                    //       Padding(
-                    //         padding: EdgeInsets.symmetric(vertical: 10.0.h),
-                    //         child: shimmerLoader(child: Container(
-                    //           width: 150.w,
-                    //           color: kWhiteColor,
-                    //         ),),
-                    //       ),
-                    //       Padding(
-                    //         padding: EdgeInsets.only(bottom: 8.0.h,),
-                    //         child: SizedBox(
-                    //           width: 156.w,
-                    //           child: shimmerLoader(child: Container(
-                    //             width: 156.w,
-                    //             color: kWhiteColor,
-                    //           ),),
-                    //         ),
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
-                    // Positioned(
-                    //   top: 63.h,
-                    //   right: 10.w,
-                    //   child: shimmerLoader(child: Container(
-                    //     width: 60.w,
-                    //     height: 60.h,
-                    //     color: kWhiteColor,
-                    //   ),),
-                    // ),
+                    Positioned(
+                      top: 90.h,
+                      left: 10.w,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: 100.w,
+                            child: shimmerLoader(child: Container(
+                              width: 100.w,
+                              height: 19.h,
+                              color: kWhiteColor,
+                            ),),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 15.0.h),
+                            child: SizedBox(
+                              width: 140.w,
+                              child: shimmerLoader(child: Container(
+                                width: 100.w,
+                                height: 30.h,
+                                color: kWhiteColor,
+                              ),),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 10.0.h),
+                            child: SizedBox(
+                              width: 120.w,
+                              child: shimmerLoader(child: Container(
+                                width: 120.w,
+                                height: 14.h,
+                                color: kWhiteColor,
+                              ),),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 160.w,
+                            child: shimmerLoader(child: Container(
+                              width: 160.w,
+                              height: 14.h,
+                              color: kWhiteColor,
+                            ),),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 10.0.h),
+                            child: SizedBox(
+                              width: 80.w,
+                              child: shimmerLoader(child: Container(
+                                width: 80.w,
+                                height: 14.h,
+                                color: kWhiteColor,
+                              ),),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ],

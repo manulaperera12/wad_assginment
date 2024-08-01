@@ -81,7 +81,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                         onToggle: toggleCouponGrid,
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: 17.0.h),
+                        padding: EdgeInsets.only(top: 24.0.h),
                         child: const CustomDivider(),
                       ),
                       SizedBox(
