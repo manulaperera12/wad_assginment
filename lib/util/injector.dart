@@ -2,7 +2,12 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:wad_assignment_manula/features/vendor_profile/data/datasource/vendor_profile_local_datascource.dart';
+import 'package:wad_assignment_manula/features/vendor_profile/data/datasource/vendor_profile_remote_datasource.dart';
+import 'package:wad_assignment_manula/features/vendor_profile/data/repository/vendor_profile_repository_impl.dart';
+import 'package:wad_assignment_manula/features/vendor_profile/domain/repository/vendor_profile_repository.dart';
+import 'package:wad_assignment_manula/features/vendor_profile/domain/usecase/vendor_profile_usecase.dart';
+import 'package:wad_assignment_manula/features/vendor_profile/presentation/bloc/vendor_profile_bloc.dart';
 import '../core/network/dio_client.dart';
 import '../core/network/network_info.dart';
 import '../features/explore/data/datasource/coupon/coupon_local_datasource.dart';
@@ -31,6 +36,18 @@ Future<void> setupLocators() async {
   // Data Sources
   sl.registerLazySingleton<CouponRemoteDatasource>(() => CouponRemoteRemoteDataSourceImpl(dioClient: sl()));
   sl.registerLazySingleton<CouponLocalDataSource>(() => CouponLocalDataSourceImpl(sharedPreferences: sl()));
+
+  /// Feature: vendor profile
+  // Blocs
+  sl.registerFactory<VendorProfileBloc>(() => VendorProfileBloc(vendorProfileUseCase: sl()));
+  // Use Cases
+  sl.registerLazySingleton<VendorProfileUseCase>(() => VendorProfileUseCase(vendorProfileRepository: sl()));
+  // Repositories
+  sl.registerLazySingleton<VendorProfileRepository>(() =>
+      VendorProfileRepositoryImpl(networkInfo: sl(), vendorProfileLocalDataSource: sl(), vendorProfileRemoteDataSource: sl()));
+  // Data Sources
+  sl.registerLazySingleton<VendorProfileRemoteDataSource>(() => VendorProfileRemoteDatasourceImpl(dioClient: sl()));
+  sl.registerLazySingleton<VendorProfileLocalDataSource>(() => VendorProfileLocalDataSourceImpl(sharedPreferences: sl()));
 
   /// Feature: vendor
   // Blocs
