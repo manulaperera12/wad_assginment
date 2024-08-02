@@ -6,7 +6,7 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 import 'package:wad_assignment_manula/features/vendor_profile/domain/entity/company_data_entity.dart';
-import 'package:wad_assignment_manula/features/vendor_profile/domain/entity/coupons_entity.dart';
+import 'package:wad_assignment_manula/features/vendor_profile/domain/entity/vendor_profile_coupons_entity.dart';
 import 'package:wad_assignment_manula/features/vendor_profile/domain/entity/vendor_profile_entity.dart';
 
 import '../../domain/entity/company_entity.dart';
@@ -74,7 +74,7 @@ class VendorProfileModel extends Equatable {
         ),
         couponsEntity: List.from(
           (companyData?.coupons ?? []).map((couponsEntity) {
-            return CouponsEntity(
+            return VendorProfileCouponsEntity(
               id: couponsEntity.id ?? -9999,
               parentCompanyId: couponsEntity.parentCompanyId ?? -9999,
               title: couponsEntity.title ?? '',

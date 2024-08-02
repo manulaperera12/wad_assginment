@@ -1,5 +1,6 @@
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart';
+import 'package:wad_assignment_manula/features/vendor_profile/domain/entity/vendor_profile_coupons_entity.dart';
 import '../../../explore/domain/entity/coupons/coupons_entity.dart';
 import 'company_entity.dart';
 
@@ -22,7 +23,7 @@ class CompanyDataEntity extends Equatable {
   final String coverImg;
   final double rating;
   final List<CompanyEntity> companyEntity;
-  final List<CouponsEntity> couponsEntity;
+  final List<VendorProfileCouponsEntity> couponsEntity;
 
   const CompanyDataEntity({
     required this.id,
@@ -44,8 +45,7 @@ class CompanyDataEntity extends Equatable {
   });
 
   @override
-  List<Object> get props =>
-      [
+  List<Object> get props => [
         id,
         name,
         subName,

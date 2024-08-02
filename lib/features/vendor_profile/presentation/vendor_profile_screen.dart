@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:wad_assignment_manula/features/vendor_profile/presentation/widgets/vendor_profile_coupons_grid.dart';
 import '../../../core/presentation/bounce_widget.dart';
-import '../../../core/presentation/coupons_grid.dart';
 import '../../../util/colors.dart';
 import '../../../util/font.dart';
 
@@ -10,10 +10,19 @@ class VendorProfileScreen extends StatefulWidget {
   final String title;
   final String description;
   final String imagePath;
+  final String imagePathCover;
   final String rating;
+  final int id;
 
-  const VendorProfileScreen(
-      {super.key, required this.title, required this.imagePath, required this.description, required this.rating});
+  const VendorProfileScreen({
+    super.key,
+    required this.title,
+    required this.imagePath,
+    required this.description,
+    required this.rating,
+    required this.imagePathCover,
+    required this.id,
+  });
 
   @override
   State<VendorProfileScreen> createState() => _VendorProfileScreenState();
@@ -215,8 +224,10 @@ class _VendorProfileScreenState extends State<VendorProfileScreen> {
                   ),
 
                   /// coupon grid
-                  const CouponsGridWrapper(
-                    showCoupons: true,
+                  VendorProfileCouponsGridWrapper(
+                    imagePathCover: widget.imagePathCover,
+                    imagePath: widget.imagePath,
+                    parentCompanyId: widget.id,
                   ),
                 ],
               ),

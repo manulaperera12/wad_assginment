@@ -135,6 +135,10 @@ class _CouponsGridState extends State<CouponsGrid> {
                                     .join(" "),
                             description: widget.showCoupons ? (coupon?.description ?? "N/A") : (vendor?.description ?? "N/A"),
                             rating: vendor?.rating.toStringAsFixed(1) ?? '4.5',
+                            imagePathCover: widget.showCoupons
+                                ? "https://staging-admin.slashdeals.lk${coupon?.parentCompanyCoverImg}"
+                                : "https://staging-admin.slashdeals.lk${vendor?.coverImg}",
+                            id: widget.showCoupons ? coupon?.parentCompanyId ?? -999 : vendor?.parentCompanyId ?? -999,
                           ),
                         ),
                       );

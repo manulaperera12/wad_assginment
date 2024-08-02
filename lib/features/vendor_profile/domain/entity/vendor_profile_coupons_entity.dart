@@ -1,10 +1,10 @@
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart';
 
-part 'coupons_entity.g.dart';
+part 'vendor_profile_coupons_entity.g.dart';
 
 @CopyWith()
-class CouponsEntity extends Equatable {
+class VendorProfileCouponsEntity extends Equatable {
   final int id;
   final String title;
   final String subtitle;
@@ -23,7 +23,7 @@ class CouponsEntity extends Equatable {
   final int hasFavorited;
   final String? thumbnail;
 
-  const CouponsEntity({
+  const VendorProfileCouponsEntity({
     required this.id,
     required this.title,
     required this.subtitle,
@@ -44,8 +44,7 @@ class CouponsEntity extends Equatable {
   });
 
   @override
-  List<Object?> get props =>
-      [
+  List<Object?> get props => [
         id,
         title,
         subtitle,

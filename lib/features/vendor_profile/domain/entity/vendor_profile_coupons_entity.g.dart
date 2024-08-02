@@ -1,53 +1,53 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'coupons_entity.dart';
+part of 'vendor_profile_coupons_entity.dart';
 
 // **************************************************************************
 // CopyWithGenerator
 // **************************************************************************
 
-abstract class _$CouponsEntityCWProxy {
-  CouponsEntity id(int id);
+abstract class _$VendorProfileCouponsEntityCWProxy {
+  VendorProfileCouponsEntity id(int id);
 
-  CouponsEntity title(String title);
+  VendorProfileCouponsEntity title(String title);
 
-  CouponsEntity subtitle(String subtitle);
+  VendorProfileCouponsEntity subtitle(String subtitle);
 
-  CouponsEntity description(String description);
+  VendorProfileCouponsEntity description(String description);
 
-  CouponsEntity parentCompanyId(int parentCompanyId);
+  VendorProfileCouponsEntity parentCompanyId(int parentCompanyId);
 
-  CouponsEntity value(int value);
+  VendorProfileCouponsEntity value(int value);
 
-  CouponsEntity valueType(String valueType);
+  VendorProfileCouponsEntity valueType(String valueType);
 
-  CouponsEntity minSaving(int minSaving);
+  VendorProfileCouponsEntity minSaving(int minSaving);
 
-  CouponsEntity maxSaving(int maxSaving);
+  VendorProfileCouponsEntity maxSaving(int maxSaving);
 
-  CouponsEntity isActive(int isActive);
+  VendorProfileCouponsEntity isActive(int isActive);
 
-  CouponsEntity isSpecialCoupon(int isSpecialCoupon);
+  VendorProfileCouponsEntity isSpecialCoupon(int isSpecialCoupon);
 
-  CouponsEntity isLimited(int isLimited);
+  VendorProfileCouponsEntity isLimited(int isLimited);
 
-  CouponsEntity isUser(int isUser);
+  VendorProfileCouponsEntity isUser(int isUser);
 
-  CouponsEntity isForEveryone(int isForEveryone);
+  VendorProfileCouponsEntity isForEveryone(int isForEveryone);
 
-  CouponsEntity isAvailableForExpired(int isAvailableForExpired);
+  VendorProfileCouponsEntity isAvailableForExpired(int isAvailableForExpired);
 
-  CouponsEntity hasFavorited(int hasFavorited);
+  VendorProfileCouponsEntity hasFavorited(int hasFavorited);
 
-  CouponsEntity thumbnail(String? thumbnail);
+  VendorProfileCouponsEntity thumbnail(String? thumbnail);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `CouponsEntity(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `VendorProfileCouponsEntity(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
   /// ```dart
-  /// CouponsEntity(...).copyWith(id: 12, name: "My name")
+  /// VendorProfileCouponsEntity(...).copyWith(id: 12, name: "My name")
   /// ````
-  CouponsEntity call({
+  VendorProfileCouponsEntity call({
     int? id,
     String? title,
     String? subtitle,
@@ -68,78 +68,85 @@ abstract class _$CouponsEntityCWProxy {
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfCouponsEntity.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfCouponsEntity.copyWith.fieldName(...)`
-class _$CouponsEntityCWProxyImpl implements _$CouponsEntityCWProxy {
-  const _$CouponsEntityCWProxyImpl(this._value);
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfVendorProfileCouponsEntity.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfVendorProfileCouponsEntity.copyWith.fieldName(...)`
+class _$VendorProfileCouponsEntityCWProxyImpl
+    implements _$VendorProfileCouponsEntityCWProxy {
+  const _$VendorProfileCouponsEntityCWProxyImpl(this._value);
 
-  final CouponsEntity _value;
-
-  @override
-  CouponsEntity id(int id) => this(id: id);
+  final VendorProfileCouponsEntity _value;
 
   @override
-  CouponsEntity title(String title) => this(title: title);
+  VendorProfileCouponsEntity id(int id) => this(id: id);
 
   @override
-  CouponsEntity subtitle(String subtitle) => this(subtitle: subtitle);
+  VendorProfileCouponsEntity title(String title) => this(title: title);
 
   @override
-  CouponsEntity description(String description) =>
+  VendorProfileCouponsEntity subtitle(String subtitle) =>
+      this(subtitle: subtitle);
+
+  @override
+  VendorProfileCouponsEntity description(String description) =>
       this(description: description);
 
   @override
-  CouponsEntity parentCompanyId(int parentCompanyId) =>
+  VendorProfileCouponsEntity parentCompanyId(int parentCompanyId) =>
       this(parentCompanyId: parentCompanyId);
 
   @override
-  CouponsEntity value(int value) => this(value: value);
+  VendorProfileCouponsEntity value(int value) => this(value: value);
 
   @override
-  CouponsEntity valueType(String valueType) => this(valueType: valueType);
+  VendorProfileCouponsEntity valueType(String valueType) =>
+      this(valueType: valueType);
 
   @override
-  CouponsEntity minSaving(int minSaving) => this(minSaving: minSaving);
+  VendorProfileCouponsEntity minSaving(int minSaving) =>
+      this(minSaving: minSaving);
 
   @override
-  CouponsEntity maxSaving(int maxSaving) => this(maxSaving: maxSaving);
+  VendorProfileCouponsEntity maxSaving(int maxSaving) =>
+      this(maxSaving: maxSaving);
 
   @override
-  CouponsEntity isActive(int isActive) => this(isActive: isActive);
+  VendorProfileCouponsEntity isActive(int isActive) => this(isActive: isActive);
 
   @override
-  CouponsEntity isSpecialCoupon(int isSpecialCoupon) =>
+  VendorProfileCouponsEntity isSpecialCoupon(int isSpecialCoupon) =>
       this(isSpecialCoupon: isSpecialCoupon);
 
   @override
-  CouponsEntity isLimited(int isLimited) => this(isLimited: isLimited);
+  VendorProfileCouponsEntity isLimited(int isLimited) =>
+      this(isLimited: isLimited);
 
   @override
-  CouponsEntity isUser(int isUser) => this(isUser: isUser);
+  VendorProfileCouponsEntity isUser(int isUser) => this(isUser: isUser);
 
   @override
-  CouponsEntity isForEveryone(int isForEveryone) =>
+  VendorProfileCouponsEntity isForEveryone(int isForEveryone) =>
       this(isForEveryone: isForEveryone);
 
   @override
-  CouponsEntity isAvailableForExpired(int isAvailableForExpired) =>
+  VendorProfileCouponsEntity isAvailableForExpired(int isAvailableForExpired) =>
       this(isAvailableForExpired: isAvailableForExpired);
 
   @override
-  CouponsEntity hasFavorited(int hasFavorited) =>
+  VendorProfileCouponsEntity hasFavorited(int hasFavorited) =>
       this(hasFavorited: hasFavorited);
 
   @override
-  CouponsEntity thumbnail(String? thumbnail) => this(thumbnail: thumbnail);
+  VendorProfileCouponsEntity thumbnail(String? thumbnail) =>
+      this(thumbnail: thumbnail);
 
   @override
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `CouponsEntity(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `VendorProfileCouponsEntity(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
   /// ```dart
-  /// CouponsEntity(...).copyWith(id: 12, name: "My name")
+  /// VendorProfileCouponsEntity(...).copyWith(id: 12, name: "My name")
   /// ````
-  CouponsEntity call({
+  VendorProfileCouponsEntity call({
     Object? id = const $CopyWithPlaceholder(),
     Object? title = const $CopyWithPlaceholder(),
     Object? subtitle = const $CopyWithPlaceholder(),
@@ -158,7 +165,7 @@ class _$CouponsEntityCWProxyImpl implements _$CouponsEntityCWProxy {
     Object? hasFavorited = const $CopyWithPlaceholder(),
     Object? thumbnail = const $CopyWithPlaceholder(),
   }) {
-    return CouponsEntity(
+    return VendorProfileCouponsEntity(
       id: id == const $CopyWithPlaceholder() || id == null
           ? _value.id
           // ignore: cast_nullable_to_non_nullable
@@ -238,8 +245,9 @@ class _$CouponsEntityCWProxyImpl implements _$CouponsEntityCWProxy {
   }
 }
 
-extension $CouponsEntityCopyWith on CouponsEntity {
-  /// Returns a callable class that can be used as follows: `instanceOfCouponsEntity.copyWith(...)` or like so:`instanceOfCouponsEntity.copyWith.fieldName(...)`.
+extension $VendorProfileCouponsEntityCopyWith on VendorProfileCouponsEntity {
+  /// Returns a callable class that can be used as follows: `instanceOfVendorProfileCouponsEntity.copyWith(...)` or like so:`instanceOfVendorProfileCouponsEntity.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
-  _$CouponsEntityCWProxy get copyWith => _$CouponsEntityCWProxyImpl(this);
+  _$VendorProfileCouponsEntityCWProxy get copyWith =>
+      _$VendorProfileCouponsEntityCWProxyImpl(this);
 }

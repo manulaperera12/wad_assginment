@@ -48,8 +48,8 @@ class CustomAnimatedToggleButtonState extends State<CustomAnimatedToggleButton> 
     return Padding(
       padding: EdgeInsets.only(top: 8.0.h),
       child: Container(
-        width: 283.w,
-        height: 58.h,
+        width: 290.w,
+        height: 65.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(29.r)),
           border: Border.all(color: kButtonShadowColor, width: 0.5.w),
@@ -71,7 +71,7 @@ class CustomAnimatedToggleButtonState extends State<CustomAnimatedToggleButton> 
                 left: _animation.value * (283 / 2),
                 right: (1 - _animation.value) * (283 / 2),
                 child: Container(
-                  height: 58.h,
+                  height: 64.h,
                   decoration: const BoxDecoration(
                     color: kWhiteColor,
                     borderRadius: BorderRadius.all(Radius.circular(29)),

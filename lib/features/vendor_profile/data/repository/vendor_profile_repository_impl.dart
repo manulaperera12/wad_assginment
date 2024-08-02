@@ -20,11 +20,11 @@ class VendorProfileRepositoryImpl implements VendorProfileRepository {
 
   @override
   Future<Either<Failure, VendorProfileEntity>> getVendorProfileDetail(int parentCompanyId) async {
-    if(await networkInfo.isConnectedToInternet){
-      try{
+    if (await networkInfo.isConnectedToInternet) {
+      try {
         final vendorProfileData = await vendorProfileRemoteDataSource.getVendorProfile(parentCompanyId);
         return Right(vendorProfileData.toEntity());
-      }on ServerException catch (serverException){
+      } on ServerException catch (serverException) {
         return Left(ServerFailure(message: serverException.errorMessage));
       }
     } else {

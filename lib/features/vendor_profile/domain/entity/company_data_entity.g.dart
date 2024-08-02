@@ -37,7 +37,8 @@ abstract class _$CompanyDataEntityCWProxy {
 
   CompanyDataEntity companyEntity(List<CompanyEntity> companyEntity);
 
-  CompanyDataEntity couponsEntity(List<CouponsEntity> couponsEntity);
+  CompanyDataEntity couponsEntity(
+      List<VendorProfileCouponsEntity> couponsEntity);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `CompanyDataEntity(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -61,7 +62,7 @@ abstract class _$CompanyDataEntityCWProxy {
     String? coverImg,
     double? rating,
     List<CompanyEntity>? companyEntity,
-    List<CouponsEntity>? couponsEntity,
+    List<VendorProfileCouponsEntity>? couponsEntity,
   });
 }
 
@@ -121,7 +122,8 @@ class _$CompanyDataEntityCWProxyImpl implements _$CompanyDataEntityCWProxy {
       this(companyEntity: companyEntity);
 
   @override
-  CompanyDataEntity couponsEntity(List<CouponsEntity> couponsEntity) =>
+  CompanyDataEntity couponsEntity(
+          List<VendorProfileCouponsEntity> couponsEntity) =>
       this(couponsEntity: couponsEntity);
 
   @override
@@ -219,7 +221,7 @@ class _$CompanyDataEntityCWProxyImpl implements _$CompanyDataEntityCWProxy {
           couponsEntity == const $CopyWithPlaceholder() || couponsEntity == null
               ? _value.couponsEntity
               // ignore: cast_nullable_to_non_nullable
-              : couponsEntity as List<CouponsEntity>,
+              : couponsEntity as List<VendorProfileCouponsEntity>,
     );
   }
 }

@@ -5,7 +5,7 @@ enum VendorProfileStatus { initial, loading, success, failure }
 class VendorProfileState extends Equatable {
   final VendorProfileStatus vendorProfileStatus;
   final List<CompanyEntity> companyList;
-  final List<CouponsEntity> couponsList;
+  final List<VendorProfileCouponsEntity> couponsList;
   final String? errorMessage;
 
   const VendorProfileState({
@@ -26,7 +26,7 @@ class VendorProfileState extends Equatable {
   VendorProfileState copyWith({
     VendorProfileStatus? vendorProfileStatus,
     List<CompanyEntity>? companyList,
-    List<CouponsEntity>? couponsList,
+    List<VendorProfileCouponsEntity>? couponsList,
     String? errorMessage,
   }) {
     return VendorProfileState(
